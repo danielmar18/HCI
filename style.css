@@ -8,6 +8,9 @@ body {
   width: 100vw;
   margin: 0;
   font-family: "IBM Plex Sans", sans-serif;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 input {
@@ -66,7 +69,7 @@ input:focus-visible {
 #body-element {
   width: 60%;
   flex: 1;
-  overflow: auto;
+  max-height: 90%;
 }
 
 #header {
@@ -82,7 +85,7 @@ input:focus-visible {
   box-sizing: border-box;
 }
 
-#msg-list {
+.msg-list {
   width: 100%;
   overflow: auto;
   background-color: #fdf6ff;
@@ -95,7 +98,10 @@ input:focus-visible {
   padding-bottom: 4px;
   padding-right: 12px;
   padding-left: 12px;
+}
 
+.msg-list-hidden {
+  display: none;
 }
 
 .msg {
@@ -109,18 +115,18 @@ input:focus-visible {
   align-self:flex-end;
 }
 
-#msg-list > .msg-self > .msg-content {
+.msg-list > .msg-self > .msg-content {
   margin-right: 12px;
 }
 
-#msg-list > .msg > .msg-client-icon {
+.msg-list > .msg > .msg-client-icon {
   width: 36px;
   height: 36px;
   border-radius: 50%;
   margin-right: 12px;
 }
 
-#msg-list > .msg > .msg-content {
+.msg-list > .msg > .msg-content {
   background-color: #fefdff;
   padding-left: 12px;
   padding-right: 12px;
@@ -128,6 +134,8 @@ input:focus-visible {
   padding-bottom: 6px;
   border-radius: 4px;
   width: fit-content;
+  word-wrap: break-word;
+  
   border: 0.5px solid #e4b2ff;
 
   /* Courtesy of this tool: https://10015.io/tools/css-box-shadow-generator */
@@ -137,11 +145,10 @@ input:focus-visible {
 
   max-width: 40ch;
   position: relative;
-  /* z-index: 50; */
   transition-duration: 200ms;
 }
 
-#msg-list > .msg > .msg-content:hover {
+.msg-list > .msg > .msg-content:hover {
   -webkit-box-shadow: 0 3px 5px 0 #999999;
   -moz-box-shadow: 0 3px 5px 0 #999999;
   box-shadow: 0 3px 5px 0 #cbc8c8;
@@ -165,7 +172,7 @@ input:focus-visible {
   text-overflow:ellipsis;
 }
 
-#msg-list > .msg > .msg-content:hover .msg-content-username {
+.msg-list > .msg > .msg-content:hover .msg-content-username {
   color: #2f0844;
   transition-duration: 150ms;
 }
@@ -176,7 +183,10 @@ input:focus-visible {
   margin-left: 48px;
   margin-top: 8px;
   margin-bottom: 16px;
+}
 
+.indicator-alert {
+  color: #c80e0e !important
 }
 
 #activity-indicator-username {
@@ -188,13 +198,89 @@ input:focus-visible {
   margin-right: 4px;
 }
 
-#channel-name {
+#channel-names {
+  position: relative;
+}
+
+#help-button {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background-color: #762aa8c3;
+  border: 1px solid #762aa8c3;
+  color: #fefcff;
+  position: absolute;
+  top: 4px;
+  left: -12px;
+  transform: translateX(-100%);
+  font-size: 12px;
+  cursor: pointer;
+  transition-duration: 150ms;
+}
+
+#help-button:hover {
+  background-color: #762aa8;
+  transition-duration: 150ms;
+}
+
+#information-card {
+  position: absolute;
+  top: -8px;
+  left: -20px;
+  transform: translateY(-100%) translateX(-50%);
+  width: fit-content;
+  max-width: 180px;
+  padding: 8px;
+  background-color: #762aa8dc;
+  color: #fbf7fe;
+  font-size: 14px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0%;
+  transition-duration: 200ms;
+}
+
+#help-button:hover + #information-card {
+  top: -12px;
+  opacity: 100%;
+  transition-duration: 200ms;
+}
+
+#info-card-ctrl {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+
+.channel-name-selected {
   font-size: 18px;
   font-weight: 600;
   color: #762aa8;
   margin-bottom: 8px;
   padding-left: 4px;
   border-left: 4px solid #762aa8;
+  margin-right: 24px;
+  transition-duration: 150ms;
+  cursor: pointer;
+}
+
+.channel-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #762aa891;
+  margin-bottom: 8px;
+  padding-left: 4px;
+  border-left: 4px solid #762aa891;
+  margin-right: 24px;
+  transition-duration: 150ms;
+  cursor: pointer;
+}
+
+.channel-name:hover {
+  color: #762aa8;
+  border-left: 4px solid #762aa8;
+  transition-duration: 150ms;
 }
 
 #msg-input {
@@ -256,7 +342,7 @@ input:focus-visible {
   box-sizing: border-box;
 }
 
-#client-list {
+.client-list {
   height: fit-content;
   max-height: 85%;
   overflow: auto;
@@ -267,7 +353,10 @@ input:focus-visible {
   border-radius: 8px;
   padding-right: 12px;
   padding-left: 12px;
+}
 
+.client-list-hidden {
+  display: none;
 }
 
 #active-users {
@@ -299,7 +388,7 @@ input:focus-visible {
 }
 
 
-#client-list > .client > .client-icon {
+.client-list > .client > .client-icon {
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -307,7 +396,7 @@ input:focus-visible {
   flex-shrink: 0;
 }
 
-#client-list > .client > .client-content {
+.client-list > .client > .client-content {
   font-size: 15px;
   font-weight: 500;
   color: #762aa8da;
@@ -396,3 +485,91 @@ input:focus-visible {
 }
 
 /* -- End of Nickname Prompt -- */
+
+/* TODO Channel Choice Prompt */
+
+#channel-choice-prompt {
+  position: absolute;
+  z-index: 20;
+}
+
+#channel-choices {
+  max-width: 50%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 48px;
+}
+
+.channel-choice {
+  border-left: 12px solid #762aa8a7;
+  max-width: 240px;
+  transition-duration: 150ms;
+  cursor: pointer;
+  margin-left: 24px;
+  margin-right: 24px;
+  height: fit-content;
+}
+
+.channel-choice-selected {
+  opacity: 60%;
+  cursor: not-allowed;
+}
+
+.channel-choice-name {
+  color: #2f0844c4;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+  margin-left: 2px;
+  transition-duration: 150ms;
+}
+
+.channel-description {
+  color: #2f084494;
+  line-height: 1;
+  margin-left: 4px;
+  letter-spacing: -1px;
+  transition-duration: 150ms;
+}
+
+.channel-choice:hover {
+  border-left: 12px solid #762aa8;
+  max-width: 240px;
+  transition-duration: 150ms;
+}
+
+.channel-choice:hover > .channel-choice-name {
+  color: #2f0844;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+  margin-left: 2px;
+  transition-duration: 150ms;
+}
+
+.channel-choice:hover > .channel-description {
+  color: #2f0844;
+  line-height: 1;
+  margin-left: 4px;
+  letter-spacing: -1px;
+  transition-duration: 150ms;
+}
+
+.visible-channels {
+  height: 100vh;
+  width: 100vw;
+  background-color: #faf1fff0;
+  transition-duration: 150ms;
+}
+
+.hidden {
+  height: 100vh;
+  width: 100vw;
+  pointer-events: none;
+  opacity: 0%;
+  transition-duration: 150ms;
+}
+
+/* TODO -- end of Channel Choice Prompt */

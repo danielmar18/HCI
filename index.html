@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="./style.css">
 </head>
   <body>
+
+    <!-- Nickname Prompt Overlay -->
     <div id="nickname-prompt" class="hidden flex center">
       <div id="prompt-card" class="flex-col center">
         <div>Hmm, it seems like you don't have a nickname....</div>
@@ -24,6 +26,14 @@
         </div>
       </div>
     </div>
+
+    <!-- Channel Choice Overlay -->
+    <div id="channel-choice-prompt" class="hidden flex center">
+      <div id="channel-choices">
+      </div>
+    </div>
+
+
     <div id="header">
       <img src="./logo.svg" alt="System Logo" width="300" >
     </div>
@@ -32,11 +42,18 @@
     </div>
     <div class="flex center" id="body-element">
       <div id="msgs" class="flex-col">
-        <div id="channel-name">
-          #General
+        <div id="channel-names" class="flex">
+          <div id="help-button" class="flex center">
+            ?
+          </div>
+          <div id="information-card">
+            Press <span id="info-card-ctrl">CTRL</span> to Open or Close the Channel Menu!
+          </div>
+          <div class="channel-name-selected">
+            General
+          </div>
         </div>
-        <div id="msg-list" class="flex-col shadow-sm">
-
+        <div id="General-msgs" class="flex-col shadow-sm msg-list">
         </div>
         <div id="input" class="flex">
           <input type="text" class="shadow-sm" id="msg-input" placeholder="Type your message here...">
@@ -49,7 +66,7 @@
         <div id="active-users">
           Active Users
         </div>
-        <div id="client-list" class="shadow-sm flex-col">
+        <div id="General-clients" class="shadow-sm flex-col client-list">
         </div>
       </div>
     </div>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WarpTalk</title>
+  <link rel="icon" href="favicon_48.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <script src="./warptalk.js" type="application/javascript"></script>
+  <script src="./script.js" type="application/javascript" defer></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+  <body>
+    <div id="nickname-prompt" class="hidden flex center">
+      <div id="prompt-card" class="flex-col center">
+        <div>Hmm, it seems like you don't have a nickname....</div>
+        <div id="prompt-input-container" class="flex middle">
+          <input type="text" class="" id="prompt-input" placeholder="Please enter nickname...">
+          <div id="prompt-confirm-button" class="flex center">
+            Confirm
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="header">
+      <img src="./logo.svg" alt="System Logo" width="300" >
+    </div>
+    <div id="channels">
+
+    </div>
+    <div class="flex center" id="body-element">
+      <div id="msgs" class="flex-col">
+        <div id="channel-name">
+          #General
+        </div>
+        <div id="msg-list" class="flex-col shadow-sm">
+
+        </div>
+        <div id="input" class="flex">
+          <input type="text" class="shadow-sm" id="msg-input" placeholder="Type your message here...">
+          <div id="icon-container" class="flex center shadow-md" >
+            <svg id="icon" width="90" height="90" viewBox="0 0 90 90" ><path d="M36.603,46.977l-34.57,-11.66c-2.707,-0.91 -2.703,-4.726 -0.035,-5.66l83.988,-29.453c2.371,-0.828 4.629,1.473 3.809,3.809l-29.453,83.988c-0.938,2.683 -4.766,2.668 -5.668,-0.063l-11.668,-34.586c-0.219,-0.652 -0.2,-1.328 0.011,-1.933l2.387,-6.824l-6.824,2.386c-0.668,0.231 -1.36,0.215 -1.977,-0.004l0,0Zm12.023,-9.847l9.992,-9.992c2.793,-2.793 7.036,1.449 4.243,4.242l-9.993,9.992l-3.863,11.047l8.57,25.402l24.516,-69.91l-69.914,24.516l25.402,8.57l11.047,-3.867Z"/>
+          </div>
+        </div>
+      </div>
+      <div id="client-list-container" class="flex-col">
+        <div id="active-users">
+          Active Users
+        </div>
+        <div id="client-list" class="shadow-sm flex-col">
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

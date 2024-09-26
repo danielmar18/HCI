@@ -1,0 +1,398 @@
+body {
+  background-color: #faf1ff;
+  color: #2f0844;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+input {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  color: #2f0844;
+}
+
+input::placeholder {
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #2f0844ce;
+  font-size: 15px;
+}
+
+input:focus-visible {
+  outline: 0.75px solid #762aa8;
+}
+
+/* ? Tailwind Inspired Generics for Heavily Used Styles */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.middle {
+  justify-content: center;
+}
+
+.shadow-md {
+  /* Courtesy of this tool: https://10015.io/tools/css-box-shadow-generator */
+  -webkit-box-shadow: 0 3px 5px 0 #dcd9d9;
+  -moz-box-shadow: 0 3px 5px 0 #dcd9d9;
+  box-shadow: 0 3px 5px 0 #dcd9d9;
+}
+
+.shadow-sm {
+  /* Courtesy of this tool: https://10015.io/tools/css-box-shadow-generator */
+  -webkit-box-shadow: 0 2px 3px 0 #dcd9d9;
+  -moz-box-shadow: 0 2px 3px 0 #dcd9d9;
+  box-shadow: 0 2px 3px 0 #dcd9d9;
+}
+
+/* ? -- End of Generics -- */
+
+/* * Messages */
+
+#body-element {
+  width: 60%;
+  flex: 1;
+  overflow: auto;
+}
+
+#header {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+#msgs {
+  width: 75%;
+  height: 100%;
+  padding: 24px;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+#msg-list {
+  width: 100%;
+  overflow: auto;
+  background-color: #fdf6ff;
+  scrollbar-width: thin;
+  scrollbar-color: #762aa8c5  #fdf6ff;
+  border-radius: 8px;
+  flex: 1;
+  margin-bottom: 24px;
+  padding-top: 12px;
+  padding-bottom: 4px;
+  padding-right: 12px;
+  padding-left: 12px;
+
+}
+
+.msg {
+  align-items: start;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  transition-duration: 150ms;
+}
+
+.msg-self {
+  align-self:flex-end;
+}
+
+#msg-list > .msg-self > .msg-content {
+  margin-right: 12px;
+}
+
+#msg-list > .msg > .msg-client-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+#msg-list > .msg > .msg-content {
+  background-color: #fefdff;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 4px;
+  width: fit-content;
+  border: 0.5px solid #e4b2ff;
+
+  /* Courtesy of this tool: https://10015.io/tools/css-box-shadow-generator */
+  -webkit-box-shadow: 0 2px 3px 0 #dcd9d9;
+  -moz-box-shadow: 0 2px 3px 0 #dcd9d9;
+  box-shadow: 0 2px 3px 0 #dcd9d9;
+
+  max-width: 40ch;
+  position: relative;
+  /* z-index: 50; */
+  transition-duration: 200ms;
+}
+
+#msg-list > .msg > .msg-content:hover {
+  -webkit-box-shadow: 0 3px 5px 0 #999999;
+  -moz-box-shadow: 0 3px 5px 0 #999999;
+  box-shadow: 0 3px 5px 0 #cbc8c8;
+  transition-duration: 200ms;
+}
+
+.msg-content-username {
+  position: absolute;
+  top: 0px;
+  transform: translateY(-100%);
+  left: 8px;
+  z-index: 10;
+  font-size: 12px;
+  font-weight: 500;
+  color: #2f084483;
+  transition-duration: 150ms;
+  width: fit-content;
+  max-width: 85%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+#msg-list > .msg > .msg-content:hover .msg-content-username {
+  color: #2f0844;
+  transition-duration: 150ms;
+}
+
+#activity-indicator {
+  font-size: 14px;
+  color: #2f0844c5;
+  margin-left: 48px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+
+}
+
+#activity-indicator-username {
+  font-weight: 500;
+  max-width: 20ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  margin-right: 4px;
+}
+
+#channel-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #762aa8;
+  margin-bottom: 8px;
+  padding-left: 4px;
+  border-left: 4px solid #762aa8;
+}
+
+#msg-input {
+  flex: 1;
+  border: 0.5px solid #e4b2ff;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fefcff;
+  
+}
+
+#input {
+  margin-bottom: 18px;
+  align-items: center;
+}
+
+#icon-container {
+  background-color: #6700AA;
+  border: 1px solid #6700AA;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+#icon-container:hover {
+  background-color: #fbf7fe;
+  transition-duration: 150ms;
+}
+
+#icon-container:hover > #icon path {
+  fill: #6700AA;
+  transition-duration: 200ms;
+}
+
+#icon {
+  height: 20px;
+  width: 20px;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+
+#icon path {
+  fill: #faf1ff;
+  stroke-width: 0.5px;
+  transition-duration: 200ms;
+}
+
+
+/* * --  End of Messages -- */
+
+/* ! Client List */
+
+#client-list-container {
+  width: 25%;
+  height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+#client-list {
+  height: fit-content;
+  max-height: 85%;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #762aa8c5  #fdf6ff;
+  width: 100%;
+  background-color: #fdf6ff;
+  border-radius: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
+
+}
+
+#active-users {
+  font-size: 16px;
+  font-weight: 600;
+  color: #762aa8da;
+  margin-bottom: 8px;
+  padding-left: 4px;
+  border-left: 4px solid #762aa8da;
+}
+
+.client {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.client-self {
+  border-bottom: 0.5px solid #762aa8ba;
+  margin-bottom: 0px !important;
+  padding-bottom: 8px;
+  order: -1;
+}
+
+.client-self > .client-content {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #762aa8ed;
+}
+
+
+#client-list > .client > .client-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 0px;
+  flex-shrink: 0;
+}
+
+#client-list > .client > .client-content {
+  font-size: 15px;
+  font-weight: 500;
+  color: #762aa8da;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 4px;
+  width: fit-content;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+
+/* ! -- End of Client List -- */
+
+
+/* Nickname Prompt */
+
+#nickname-prompt {
+  position: absolute;
+  z-index: 20;
+}
+
+.visible {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(33, 22, 39, 0.6);
+  transition-duration: 150ms;
+}
+
+.hidden {
+  height: 100vh;
+  width: 100vw;
+  pointer-events: none;
+  opacity: 0%;
+  transition-duration: 150ms;
+}
+
+#prompt-card {
+  padding-bottom: 36px;
+  padding-top: 36px;
+  padding-left: 48px;
+  padding-right: 48px;
+  border-radius: 8px;
+  background-color: #e4b2ff;
+}
+
+#prompt-input {
+  width: 60%;
+  border: 1px solid #762aa8;
+  padding: 10px;
+  background-color: #faf1ff;
+  color: #2f0844;
+  border-radius: 4px;
+}
+
+
+#prompt-input-container {
+  align-items: center;
+  margin-top: 12px;
+  width: 90%;
+}
+
+#prompt-confirm-button {
+  border: 1px solid #762aa8;
+  height: fit-content;
+  background-color: #762aa8;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: #faf1fff0;
+  border-radius: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition-duration: 150ms;
+}
+
+#prompt-confirm-button:hover {
+  background-color: #faf1ff;
+  color: #762aa8;
+  transition-duration: 150ms;
+}
+
+/* -- End of Nickname Prompt -- */
